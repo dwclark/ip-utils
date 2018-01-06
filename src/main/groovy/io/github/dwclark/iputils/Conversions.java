@@ -13,10 +13,14 @@ public class Conversions {
         return i;
     }
 
+    public static long parseLong(final CharSequence cs) {
+        return parseLong(cs, 0, cs.length());
+    }
+
     public static long parseLong(final CharSequence cs, final int start, final int end) {
         long accum = 0L;
         long mult = 1L;
-        for(int i = end + 1; i >= start; ++i) {
+        for(int i = end - 1; i >= start; --i) {
             accum += mult * Character.digit(cs.charAt(i), 10);
             mult *= 10;
         }
@@ -34,6 +38,10 @@ public class Conversions {
         return -1;
     }
 
+    public static long ip4ToLong(final CharSequence cs) {
+        return ip4ToLong(cs, 0, cs.length());
+    }
+    
     public static long ip4ToLong(final CharSequence cs, final int start, final int end) {
         final int p1 = nextPeriod(cs, start);
         final int p2 = nextPeriod(cs, p1+1);

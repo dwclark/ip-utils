@@ -11,14 +11,12 @@ public abstract class Ip4Range implements Comparable<Ip4Range> {
 
     @Override
     final public int hashCode() {
-        final int u = (int) getUpper();
-        final int l = (int) getLower();
-        final int h = (u ^ l) * PHI;
+        final int h = ((int) getUpper()) * ((int) getLower()) * PHI;
 		return h ^ (h >>> 16);
     }
 
     @Override
-    public boolean equals(final Object o) {
+    final public boolean equals(final Object o) {
         if(!(o instanceof Ip4Range)) {
             return false;
         }

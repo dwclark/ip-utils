@@ -7,9 +7,17 @@ class GeoInfo {
     private int geoNameId;
     private int registeredCountryGeoNameId;
     private int representedCountryGeoNameId;
+    private long postalCode;
     
-    String postalCode;
     float latitude;
     float longitude;
-    int accuracyRadius;
+    float radius;
+
+    String getPostalCode() {
+        return PostalCode.decode(postalCode).toString();
+    }
+
+    long encodedPostal() {
+        return postalCode;
+    }
 }
