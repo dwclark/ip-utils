@@ -6,13 +6,11 @@ public class PostalCode {
     public static final long SHIFT_BY = 7L;
 
     private static long convert(final char c) {
-        System.out.println("Converting char: " + c);
         long ret = (long) c;
         if(ret < 1L || ret > 127L) {
             throw new IllegalArgumentException("Can only encode characters 1 <= c <= 127");
         }
 
-        System.out.println("Returning ret: " + ret);
         return ret;
     }
     
@@ -37,7 +35,6 @@ public class PostalCode {
         for(int i = 0; i < 9; ++i) {
             int tmp = ((int) (val >> shift)) & 0x7F;
             if(tmp != 0) {
-                System.out.println("Got int: " + tmp);
                 sb.append((char) tmp);
             }
 
